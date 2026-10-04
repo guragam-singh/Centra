@@ -25,6 +25,65 @@
     </style>
 </head>
 <body>
-    <canvas id="C" width="320" height="180"></canvas>
+    <canvas id="Centra" width="320" height="180"></canvas>
+
+    <scrpit>
+        (() => {
+            "use strict";
+            const Screen_Width = 320;
+            const Screen_Height = 180;
+            const Level_End = 2680
+
+            let canvas, ctx,
+            let Deltatime = 0,
+            let GameState = "Title";
+            let CameraX = 0;
+            Let GameTime= 0;
+            Let Screen Shake = 0;
+            Const EnemySpawn = new set();   
+
+            const Keyboard = {
+                left: 0,
+                right: 0,
+                up: 0,
+                down: 0,
+                fire: 0,
+                jump: 0,
+                swap: 0,
+                reset: 0,
+                firepressed: 0,
+                jumppressed: 0,
+                swappressed: 0,
+                resetpressed: 0,
+            },
+
+            const KeyboardMap = {
+                KeyA: "left",
+                KeyD : "right",
+                KeyW: "up",
+                KeyS: "down",
+                KeyJ: "fire",
+                Space: "jump",
+                KeyR : "reset",
+                KeyE: "swap",
+            };
+
+            function handlekey(e, isdown)
+            {
+                const action = KeyboardMap[e.code];
+                if (!action) return;
+                if (e.code[0] === "A" || e.code === "Space") 
+                e.preventDefault();
+
+                if (is down && !Keyboard[action]) {
+                    if (action === "fire") Keyboard.firepressed = 1;
+                    else if (action === "jump") Keyboard.jumppressed = 1;
+                    else if (action === "swap") Keyboard.swappressed = 1;
+                    else if (action === "reset") Keyboard.resetpressed = 1;
+                }
+                keyboard[action] = isdown;
+            }
+        }
+    </scrpit>
 </body>
 </html>
